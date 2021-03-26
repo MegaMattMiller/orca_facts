@@ -1,0 +1,51 @@
+<template>
+  <b-overlay :show="loading" rounded="sm" style="min-height: 100vh;">
+    <b-container>
+      <h1>Page for adding games!</h1>
+      <b-form-input v-model="orcaFact" placeholder="Orca Fact"></b-form-input>
+      <b-button variant="success" @click="handleSubmitClicked">Submit</b-button>
+    </b-container>
+  </b-overlay>
+</template>
+<script>
+export default {
+  name: 'Add',
+  data() {
+    return {
+      loading: false,
+      orcaFact: ''
+    };
+  },
+  methods: {
+    handleSubmitClicked: function() {
+      if (this.orcaFact.trim == '' || this.humbleUrl.trim == '') {
+        return;
+      }
+      this.loading = true;
+      var payload = {};
+      payload.fact = this.orcaFact;
+      this.$store.dispatch('submitData', payload).then(() => {
+        this.$store.dispatch('getData').then(() => {
+          this.loading = false;
+        });
+      });
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.footer-div {
+  text-align: center;
+}
+
+.footer-logo {
+  text-align: center;
+  font-size: 40px;
+  color: #000;
+}
+
+.details-button {
+  margin-left: 10px;
+}
+</style>
