@@ -50,11 +50,6 @@ export default new Vuex.Store({
               element.data.ref = element.ref.id;
               data.facts.push(element.data);
             });
-            data.facts.sort(function(a, b) {
-              var textA = a.title.toUpperCase();
-              var textB = b.title.toUpperCase();
-              return textA < textB ? -1 : textA > textB ? 1 : 0;
-            });
             context.commit('updateData', data);
             resolve(data);
           });

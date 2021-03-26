@@ -1,7 +1,7 @@
 <template>
   <b-overlay :show="loading" rounded="sm" style="min-height: 100vh;">
     <b-container>
-      <h1>Page for adding games!</h1>
+      <h1>Page for adding facts!</h1>
       <b-form-input v-model="orcaFact" placeholder="Orca Fact"></b-form-input>
       <b-button variant="success" @click="handleSubmitClicked">Submit</b-button>
     </b-container>
@@ -18,7 +18,8 @@ export default {
   },
   methods: {
     handleSubmitClicked: function() {
-      if (this.orcaFact.trim == '' || this.humbleUrl.trim == '') {
+      this.orcaFact = this.orcaFact.trim();
+      if (this.orcaFact == '') {
         return;
       }
       this.loading = true;
@@ -27,6 +28,7 @@ export default {
       this.$store.dispatch('submitData', payload).then(() => {
         this.$store.dispatch('getData').then(() => {
           this.loading = false;
+          this.orcaFact = '';
         });
       });
     }
