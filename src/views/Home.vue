@@ -2,7 +2,6 @@
   <b-overlay :show="loading" rounded="sm" style="min-height: 100vh;">
     <b-container>
       <h1>Orca Facts!</h1>
-      <router-link v-if="hasAuth" :to="addGameUrl">Add Game</router-link>
       <b-card v-for="(fact, index) in this.$store.state.data.facts" :key="index" border-variant="dark">
         <b-card-title>{{ fact.fact }}</b-card-title>
       </b-card>
