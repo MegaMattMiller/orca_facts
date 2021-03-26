@@ -2,7 +2,7 @@
   <b-overlay :show="loading" rounded="sm" style="min-height: 100vh;">
     <b-container>
       <h1>Page for adding facts!</h1>
-      <b-form-input v-model="orcaFact" placeholder="Orca Fact"></b-form-input>
+      <b-form-input v-model="orcaFact" placeholder="Dolphin Fact"></b-form-input>
       <b-button variant="success" @click="handleSubmitClicked">Submit</b-button>
     </b-container>
   </b-overlay>
